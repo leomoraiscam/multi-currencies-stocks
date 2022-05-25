@@ -1,7 +1,8 @@
+import { Expression } from './expression';
 
-export class Money {
-  public amount!: number;
-  public _currency!: string;
+export class Money implements Expression {
+  private readonly amount!: number;
+  private readonly _currency!: string;
 
   constructor(amount: number, currency: string) {
     this.amount = amount;
@@ -9,16 +10,16 @@ export class Money {
   }
 
   static dollar(amount: number): Money {
-    return new Money(amount, 'USD')
+    return new Money(amount, 'USD');
   }
 
   static euro(amount: number): Money {
-    return new Money(amount, 'EUR')
+    return new Money(amount, 'EUR');
   }
 
   equals(other: Money): boolean {
     if (this._currency !== other._currency) {
-      return false
+      return false;
     }
    
     return this.amount === other.amount;
@@ -28,7 +29,11 @@ export class Money {
     return new Money(this.amount * multiplier, this._currency);
   }
 
+  plus(addend: Money): Expression {
+    return new Money(this.amount + addend.amount, this._currency)
+  }
+
   currency(): string {
-    return this._currency ;
+    return this._currency;
   }
 }
