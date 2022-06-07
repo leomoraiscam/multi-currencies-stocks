@@ -12,4 +12,9 @@ describe('Dollar', () => {
 
     expect(product.amount).toEqual(30);
   });
+
+  it('Should return true when dollars of the same value are compared', () => {
+    expect(new Dollar(5).equals(new Dollar(5))).toBeTruthy();
+    expect(new Dollar(5).equals(new Dollar(6))).toBeFalsy();
+  });
 });
