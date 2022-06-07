@@ -1,7 +1,7 @@
 import Dollar from './Dollar';
 import Euro from './Euro';
 
-describe('Dollar', () => {
+describe('Money', () => {
   it('Should correctly handle dollar multiplication', () => {
     const five: Dollar = new Dollar(5);
 
