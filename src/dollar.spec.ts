@@ -2,10 +2,14 @@ import Dollar from './Dollar';
 
 describe('Dollar', () => {
   it('Should return 10 dollars when five dollars are multiplied by 2', () => {
-    const five = new Dollar(5);
+    const five: Dollar = new Dollar(5);
 
-    five.times(2);
+    let product: Dollar = five.times(2);
 
-    expect(five.amount).toEqual(10);
+    expect(product.amount).toEqual(10);
+
+    product = five.times(3);
+
+    expect(product.amount).toEqual(30);
   });
 });
