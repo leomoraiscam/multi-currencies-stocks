@@ -1,6 +1,6 @@
 /* eslint-disable no-return-assign */
 class Dollar {
-  amount: number;
+  private amount: number;
 
   constructor(amount: number) {
     this.amount = amount;
