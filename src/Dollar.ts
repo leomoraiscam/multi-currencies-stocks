@@ -1,17 +1,14 @@
 /* eslint-disable no-return-assign */
-class Dollar {
-  private amount: number;
+import Money from './Money';
 
+class Dollar extends Money {
   constructor(amount: number) {
+    super(amount);
     this.amount = amount;
   }
 
   times(multiplier: number): Dollar {
     return new Dollar((this.amount *= multiplier));
-  }
-
-  equals(other: Dollar): boolean {
-    return this.amount === other.amount;
   }
 }
 
