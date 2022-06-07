@@ -1,4 +1,4 @@
-import { Dollar, Euro, Money } from './Money';
+import Money from './Money';
 
 describe('Money', () => {
   it('Should correctly handle dollar multiplication', () => {
@@ -10,7 +10,7 @@ describe('Money', () => {
   });
 
   it('Should correctly handle euro multiplication', () => {
-    const five: Euro = Money.euro(5);
+    const five: Money = Money.euro(5);
 
     expect(five.times(2).equals(Money.euro(10))).toBeTruthy();
 

@@ -3,7 +3,7 @@
 /* eslint-disable no-return-assign */
 /* eslint-disable max-classes-per-file */
 
-export class Money {
+class Money {
   public amount: number;
   public _currency: string;
 
@@ -12,12 +12,12 @@ export class Money {
     this._currency = _currency;
   }
 
-  static dollar(amount: number): Dollar {
-    return new Dollar(amount, 'USD');
+  static dollar(amount: number): Money {
+    return new Money(amount, 'USD');
   }
 
-  static euro(amount: number): Euro {
-    return new Euro(amount, 'EUR');
+  static euro(amount: number): Money {
+    return new Money(amount, 'EUR');
   }
 
   equals(other: Money): boolean {
@@ -29,7 +29,7 @@ export class Money {
   }
 
   times(multiplier: number): Money {
-    return new Dollar((this.amount *= multiplier), this._currency);
+    return new Money((this.amount *= multiplier), this._currency);
   }
 
   currency() {
@@ -37,18 +37,4 @@ export class Money {
   }
 }
 
-export class Dollar extends Money {
-  constructor(amount: number, currency: string) {
-    super(amount, currency);
-    this.amount = amount;
-    this._currency = currency;
-  }
-}
-
-export class Euro extends Money {
-  constructor(amount: number, currency: string) {
-    super(amount, currency);
-    this.amount = amount;
-    this._currency = currency;
-  }
-}
+export default Money;
