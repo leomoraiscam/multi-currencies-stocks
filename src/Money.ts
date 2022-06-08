@@ -4,8 +4,8 @@
 /* eslint-disable max-classes-per-file */
 
 class Money {
-  public amount: number;
-  public _currency: string;
+  private amount: number;
+  private _currency: string;
 
   constructor(amount: number, _currency: string) {
     this.amount = amount;
