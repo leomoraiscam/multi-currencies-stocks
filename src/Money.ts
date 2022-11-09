@@ -32,7 +32,7 @@ class Money {
     return new Money((this.amount *= multiplier), this._currency);
   }
 
-  currency() {
+  currency(): string {
     return this._currency;
   }
 }
