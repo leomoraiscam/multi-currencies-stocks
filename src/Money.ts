@@ -3,7 +3,9 @@
 /* eslint-disable no-return-assign */
 /* eslint-disable max-classes-per-file */
 
-class Money {
+import { Expression } from './expression';
+
+class Money implements Expression {
   private amount: number;
   private _currency: string;
 
@@ -30,6 +32,10 @@ class Money {
 
   times(multiplier: number): Money {
     return new Money((this.amount *= multiplier), this._currency);
+  }
+
+  plus(added: Money): Expression {
+    return new Money(this.amount + added.amount, this._currency);
   }
 
   currency(): string {
