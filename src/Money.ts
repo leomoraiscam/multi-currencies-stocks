@@ -3,6 +3,7 @@
 /* eslint-disable no-return-assign */
 /* eslint-disable max-classes-per-file */
 
+import { Bank } from './bank';
 import { Expression } from './expression';
 import { Sum } from './sum';
 
@@ -39,8 +40,10 @@ class Money implements Expression {
     return new Sum(this, addend);
   }
 
-  reduce(to: string): Money {
-    return this;
+  reduce(bank: Bank, to: string): Money {
+    const rate = bank.rate(this._currency, to);
+
+    return new Money(this._amount / rate, to);
   }
 
   currency(): string {
