@@ -4,13 +4,14 @@
 /* eslint-disable max-classes-per-file */
 
 import { Expression } from './expression';
+import { Sum } from './sum';
 
 class Money implements Expression {
-  private amount: number;
+  private _amount: number;
   private _currency: string;
 
   constructor(amount: number, _currency: string) {
-    this.amount = amount;
+    this._amount = amount;
     this._currency = _currency;
   }
 
@@ -31,15 +32,23 @@ class Money implements Expression {
   }
 
   times(multiplier: number): Money {
-    return new Money((this.amount *= multiplier), this._currency);
+    return new Money((this._amount *= multiplier), this._currency);
   }
 
-  plus(added: Money): Expression {
-    return new Money(this.amount + added.amount, this._currency);
+  plus(addend: Money): Expression {
+    return new Sum(this, addend);
+  }
+
+  reduce(to: string): Money {
+    return this;
   }
 
   currency(): string {
     return this._currency;
+  }
+
+  amount(): number {
+    return this._amount;
   }
 }
 
