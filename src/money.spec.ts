@@ -91,4 +91,32 @@ describe('Money', () => {
 
     expect(result).toEqual(Money.dollar(10));
   });
+
+  it('should handle the plus operation in a sum', () => {
+    const fiveBuckets: Expression = Money.dollar(5);
+    const tenEuros: Expression = Money.euro(10);
+    const bank = new Bank();
+
+    bank.addRate('EUR', 'USD', 2);
+
+    const sum: Expression = new Sum(fiveBuckets, tenEuros).plus(fiveBuckets);
+
+    const result: Money = bank.reduce(sum, 'USD');
+
+    expect(result).toEqual(Money.dollar(15));
+  });
+
+  it('should handle the times operation in a sum', () => {
+    const fiveBuckets: Expression = Money.dollar(5);
+    const tenEuros: Expression = Money.euro(10);
+    const bank = new Bank();
+
+    bank.addRate('EUR', 'USD', 2);
+
+    const sum: Expression = new Sum(fiveBuckets, tenEuros).times(2);
+
+    const result: Money = bank.reduce(sum, 'USD');
+
+    expect(result).toEqual(Money.dollar(20));
+  });
 });
